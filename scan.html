@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+	<title></title>
+	<script src="./bull/script/boot.js" type="text/javascript"></script>
+<script src="./bull/script/json2.js"></script> 
+<script src="./bull/script/toolkit.js"></script> 
+<script src="./bull/script/LodopFuncs.js"></script>
+<object id="LODOP1" classid="clsid:2105C259-1E0C-4534-8141-A753534CB4CA" width=0 height=0> 
+	<embed id="LODOP_EM1" TYPE="application/x-print-lodop" width=0 height=0 PLUGINSPAGE="install_lodop32.exe"></embed>
+</object> 
+<script>
+var p_url ="BSL?classname=m_baseinfo.scan.ScanCtl&method=";
+var form = null;
+var messageid = null;
+$(function(){
+	mini.parse();
+	form = new mini.Form("#submitForm");
+});</script>
+</head>
+<body>
+<form name="submitForm" id="submitForm" method="post" action="BullInitServletListener">
+<input name="id" id="id" class="mini-hidden" value="">
+	<span>
+		输入框：<input  style="width:900px;height:30px;background-color:white"  id="ttt"/> 
+		</span>
+	<br/><br/>
+	<div style="width:1000px;height:50px;background-color:#CFCFCF;display:flex;justify-content:space-around;align-items:center; flex-wrap: wrap;left:0;right:0;margin:auto;solid;border-width:'1px',border-color:black">
+		<div  style="width:255px;height:40px;background-color:#FAFF68;text-align:center;font-size:25px"  >底层 </div>
+		<div  style="width:255px;height:40px;background-color:#FFC333;text-align:center;font-size:25px"  > 中层</div>
+		<div  style="width:255px;height:40px;background-color:#FF7E1F;text-align:center;font-size:25px"  >上层</div>
+	</div>
+	<div style="width:1100px;height:260px;background-color:#CFCFCF;display:flex;justify-content:space-around;align-items:center;  flex-wrap: wrap;left:0;right:0;margin:auto;border-style:solid;border-width:'1px',border-color:black">
+<input name="bottomi1" id="i1"  style="width:16%;height:30%;background-color:white" disabled="disabled" class="mini-textbox"/> 
+<input name="bottomi2" id="i2" style="width:16%;height:30%;background-color:white"  disabled="disabled" class="mini-textbox"/>  
+<input name="middlei7" id="i7" style="width:16%;height:30%;background-color:white"  disabled="disabled" class="mini-textbox"/>  
+<input name="middlei8" id="i8" style="width:16%;height:30%;background-color:white"  disabled="disabled" class="mini-textbox"/>  
+<input name="topi13" id="i13" style="width:16%;height:30%;background-color:white" disabled="disabled" class="mini-textbox"/> 
+<input name="topi14" id="i14" style="width:16%;height:30%;background-color:white" disabled="disabled" class="mini-textbox"/> 
+<input name="bottomi3" id="i3" style="width:16%;height:30%;background-color:white"  disabled="disabled" class="mini-textbox"/>  
+<input name="bottomi4" id="i4" style="width:16%;height:30%;background-color:white"  disabled="disabled" class="mini-textbox"/>  
+<input name="middlei9" id="i9" style="width:16%;height:30%;background-color:white"  disabled="disabled" class="mini-textbox"/>  
+<input name="middlei10" id="i10" style="width:16%;height:30%;background-color:white" disabled="disabled" class="mini-textbox"/> 
+<input name="topi15" id="i15" style="width:16%;height:30%;background-color:white" disabled="disabled" class="mini-textbox"/> 
+<input name="topi16" id="i16" style="width:16%;height:30%;background-color:white" disabled="disabled" class="mini-textbox"/> 
+<input name="bottomi5" id="i5" style="width:16%;height:30%;background-color:white" disabled="disabled" class="mini-textbox" />  
+<input name="bottomi6" id="i6" style="width:16%;height:30%;background-color:white" disabled="disabled" class="mini-textbox" />  
+<input name="middlei11" id="i11" style="width:16%;height:30%;background-color:white" disabled="disabled" class="mini-textbox"/> 
+<input name="middlei12" id="i12" style="width:16%;height:30%;background-color:white" disabled="disabled" class="mini-textbox"/> 
+<input name="topi17" id="i17" style="width:16%;height:30%;background-color:white" disabled="disabled" class="mini-textbox"/> 
+<input name="topi18" id="i18" style="width:16%;height:30%;background-color:white" disabled="disabled" class="mini-textbox"/> 
+
+
+	</div>
+	<span style="font-size:30px;">本框已经扫件数</span><span id="num" style="font-size:35px;background-color:red;color:white"></span>
+	<div>
+	
+	
+</div>
+</form>
+
+	
+
+
+
+		<script>
+		var num=1;
+			function save(){
+				var formData = new FormData();
+				formData.append("key","1");
+				
+				var valuei1=document.getElementById('i1').innerHTML;
+				var valuei2=document.getElementById('i2').innerHTML;
+				var valuei3=document.getElementById('i3').innerHTML;
+				var valuei4=document.getElementById('i4').innerHTML;
+				var valuei5=document.getElementById('i5').innerHTML;
+				var valuei6=document.getElementById('i6').innerHTML;
+				var valuei7=document.getElementById('i7').innerHTML;
+				var valuei8=document.getElementById('i8').innerHTML;
+				var valuei9=document.getElementById('i9').innerHTML;
+				var valuei10=document.getElementById('i10').innerHTML;
+				var valuei11=document.getElementById('i11').innerHTML;
+				var valuei12=document.getElementById('i12').innerHTML;
+				var valuei13=document.getElementById('i13').innerHTML;
+				var valuei14=document.getElementById('i14').innerHTML;
+				var valuei15=document.getElementById('i15').innerHTML;
+				var valuei16=document.getElementById('i16').innerHTML;
+				var valuei17=document.getElementById('i17').innerHTML;
+				var valuei18=document.getElementById('i18').innerHTML;
+				var querystr="http://localhost:8080/yywms/BSL?classname=m_baseinfo.scan.ScanCtl&method=saveresult&valuei1="+
+						valuei1+"&valuei2="+valuei2+"&valuei3="+valuei3+"&valuei4="+valuei4+"&valuei5="+valuei5+"&valuei6="+valuei6
+						+"&valuei7="+valuei7+"&valuei8="+valuei8+"&valuei9="+valuei9+"&valuei10="+valuei10+"&valuei11="+valuei11
+						+"&valuei12="+valuei12+"&valuei13="+valuei13+"&valuei14="+valuei14+"&valuei15="+valuei15+"&valuei16="+valuei16+"&valuei17="+valuei17
+						+"&valuei18="+valuei18;
+				var xhr = new XMLHttpRequest();
+				xhr.open("post",querystr);
+				xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+				xhr.send('data=tddddt');
+			}
+
+			function printt(){
+				
+				window.print()
+				
+
+			}
+			
+			function bt_print(id,creator){
+				
+				var val1=mini.get('i1').value;
+				var val2=mini.get('i2').value;
+				var val3=mini.get('i3').value;
+				var val4=mini.get('i4').value;
+				var val5=mini.get('i5').value;
+				var val6=mini.get('i6').value;
+				var val7=mini.get('i7').value;
+				var val8=mini.get('i8').value;
+				var val9=mini.get('i9').value;
+				var val10=mini.get('i10').value;
+				var val11=mini.get('i11').value;
+				var val12=mini.get('i12').value;
+				var val13=mini.get('i13').value;
+				var val14=mini.get('i14').value;
+				var val15=mini.get('i15').value;
+				var val16=mini.get('i16').value;
+				var val17=mini.get('i17').value;
+				var val18=mini.get('i18').value;
+
+				
+
+				LODOP=getLodop(document.getElementById('LODOP1'),document.getElementById('LODOP_EM1'));
+			
+
+				LODOP.PRINT_INIT("打印控件功能演示_Lodop功能_空白练习");
+				LODOP.ADD_PRINT_RECT(61,18,763,423,0,1);
+				LODOP.ADD_PRINT_TEXT(21,143,458,35,"宁波保税区凯启精密制造有限公司");
+				LODOP.SET_PRINT_STYLEA(0,"FontSize",13);
+				LODOP.SET_PRINT_STYLEA(0,"Alignment",2);
+				LODOP.SET_PRINT_STYLEA(0,"Bold",1);
+				LODOP.ADD_PRINT_TEXT(32,551,200,25,"入库时间：");
+				LODOP.ADD_PRINT_TEXT(93,-21,165,76,"上层");
+				LODOP.SET_PRINT_STYLEA(0,"FontSize",30);
+				LODOP.SET_PRINT_STYLEA(0,"Alignment",2);
+				LODOP.SET_PRINT_STYLEA(0,"Bold",1);
+				LODOP.ADD_PRINT_TEXT(237,-18,173,84,"中层");
+				LODOP.SET_PRINT_STYLEA(0,"FontSize",30);
+				LODOP.SET_PRINT_STYLEA(0,"Alignment",2);
+				LODOP.SET_PRINT_STYLEA(0,"Bold",1);
+				LODOP.ADD_PRINT_TEXT(374,-33,180,89,"下层");
+				LODOP.SET_PRINT_STYLEA(0,"FontSize",30);
+				LODOP.SET_PRINT_STYLEA(0,"Alignment",2);
+				LODOP.SET_PRINT_STYLEA(0,"Bold",1);
+				LODOP.ADD_PRINT_TEXT(82,128,209,27,val13);
+				LODOP.SET_PRINT_STYLEA(0,"FontName","楷体");
+				LODOP.ADD_PRINT_TEXT(138,128,210,30,val15);
+				LODOP.ADD_PRINT_TEXT(82,343,215,30,val14);
+				LODOP.ADD_PRINT_TEXT(138,343,215,30,val16);
+				LODOP.ADD_PRINT_RECT(204,19,763,140,0,1);
+				LODOP.ADD_PRINT_RECT(63,17,99,420,0,1);
+				LODOP.ADD_PRINT_TEXT(83,567,210,30,val17);
+				LODOP.ADD_PRINT_TEXT(139,567,210,30,val18);
+				LODOP.ADD_PRINT_TEXT(230,123,222,25,val7);
+				LODOP.ADD_PRINT_TEXT(231,350,210,25,val8);
+				LODOP.ADD_PRINT_TEXT(231,572,205,25,val9);
+				LODOP.ADD_PRINT_TEXT(284,125,219,25,val10);
+				LODOP.ADD_PRINT_TEXT(285,352,210,25,val11);
+				LODOP.ADD_PRINT_TEXT(287,572,205,25,val12);
+				LODOP.ADD_PRINT_TEXT(371,125,218,25,val1);
+				LODOP.ADD_PRINT_TEXT(372,348,215,25,val2);
+				LODOP.ADD_PRINT_TEXT(374,571,205,25,val3);
+				LODOP.ADD_PRINT_TEXT(422,123,222,25,val4);
+				LODOP.ADD_PRINT_TEXT(424,348,215,25,val5);
+				LODOP.ADD_PRINT_TEXT(426,574,202,25,val6);
+				LODOP.ADD_PRINT_TEXT(492,541,230,35,creator);
+				LODOP.SET_PRINT_STYLEA(0,"FontSize",11);
+				LODOP.SET_PRINT_STYLEA(0,"Bold",1);
+				LODOP.ADD_PRINT_TEXT(496,31,322,35,id);
+				LODOP.SET_PRINT_STYLEA(0,"FontName","隶书");
+				LODOP.SET_PRINT_STYLEA(0,"FontSize",14);
+				LODOP.PRINT();  
+			}
+			
+
+			function clear(){
+				for(var g=1;g<=18;g++)
+				{
+					mini.get('i'+g).setValue("");
+					document.getElementById('i'+g).style.backgroundColor="white"
+						document.getElementById('ttt').value="";
+					num=1;
+					document.getElementById('num').innerHTML="0";
+				}
+			}
+
+			
+			var idstr="";
+			
+			function check(istr){
+				var val1=mini.get('i1').value;
+				var val2=mini.get('i2').value;
+				var val3=mini.get('i3').value;
+				var val4=mini.get('i4').value;
+				var val5=mini.get('i5').value;
+				var val6=mini.get('i6').value;
+				var val7=mini.get('i7').value;
+				var val8=mini.get('i8').value;
+				var val9=mini.get('i9').value;
+				var val10=mini.get('i10').value;
+				var val11=mini.get('i11').value;
+				var val12=mini.get('i12').value;
+				var val13=mini.get('i13').value;
+				var val14=mini.get('i14').value;
+				var val15=mini.get('i15').value;
+				var val16=mini.get('i16').value;
+				var val17=mini.get('i17').value;
+				var val18=mini.get('i18').value;
+				var checkarr=[val1,val2,val3,val4,val5,val6,val7,val8,val9,val10,val11,val12,val13,val14,val15,val16,val17,val18];
+				for(var ci=0;ci<=17;ci++)
+					{
+					if(istr==checkarr[ci])
+						return 1;
+					}
+				
+			}
+
+			document.onkeypress=function showkey(){
+
+			
+					if (event.keyCode == 13) 
+						{		var istr=document.getElementById('ttt').value;
+					if(istr=='save')
+					{
+						if(num<19)
+							alert('请装完再上传打印')
+						else bt_save()  ;
+					}
+					if(istr=='print')
+					{
+						bt_print();
+					}
+					if(istr=='clear')
+					{
+						clear()
+					}
+
+
+					if(istr!='save'&&istr!='clear'&&istr!='print')
+					{if(num<=19)
+						
+						{
+						if(check(istr)!=1){
+						idstr='i'+num;
+						num++;
+						document.getElementById(idstr).value=istr;
+						document.getElementById(idstr).style.backgroundColor="#21DC02"
+						document.getElementById('num').innerHTML=num-1;
+						document.getElementById('ttt').value="";
+					mini.get(idstr).setValue(istr);}
+						else {alert('重复检查');
+						document.getElementById('ttt').value="";}
+					
+						
+						}
+					else {
+						alert('已经满了，请扫码');
+						document.getElementById('ttt').value="";
+					
+					}
+					}
+
+				
+			}
+		
+		}
+			
+			function gettime(){
+				var now = new Date();	  
+		        var year = now.getFullYear();       //年
+		        var month = now.getMonth() + 1;     //月
+		        var day = now.getDate();            //日  
+		        var hh = now.getHours();            //时
+		        var mm = now.getMinutes();          //分
+		        var ss = now.getSeconds();           //秒
+
+		        var time=year+"年"+month+"月"+day+"日"+hh+"时"+mm+"分"+ss+"秒";
+		       return time;
+			}
+
+			function bt_save(){
+				var id = new Date().getTime();
+				var timestr=gettime();
+				if(!form.validate()) return ;
+				var data = form.getData(true); 
+				var json = mini.encode(data);
+				//data = JsonArrayToL(data);//转为小字
+				//alert(JSON.stringify(json));
+				messageid = mini.loading("加载中,请稍等 ...", "加载中");
+				$.ajax({
+					url: p_url+"saveresult",type: "post",
+					data:{data:"["+json+"]",time:timestr,id:id},
+						success: function (text) {
+							mini.hideMessageBox(messageid);					
+					bt_print(id,text);clear();
+						}
+				});
+			}
+
+
+
+
+
+	</script>
+</body>
+</html>
